@@ -59,20 +59,34 @@
 
     $link = require __DIR__ . "/connect.php";
 
-    /*
+    $query = "INSERT INTO proy_usuarios (nombre, correo, clave_hash) VALUES (?, ?, ?)"; //Se elabora el query
 
-    $query = "INSERT INTO proy_usuarios (nombre, correo, clave_hash) VALUES (?, ?, ?)"; //insersión de datos
-
-    $stmt = $link->stmt_init(); 
+    $stmt = $link->stmt_init(); //se prepara para realizar la insersión evaluando si el query está bien
 
     if (! $stmt->prepare($query) ){
         die("SQL error: " . $link->error);
     }
 
-    */
+    $stmt->bind_param("sss", $_POST["usuario"], $_POST["correo"], $contrasenia_hash); //toma los datos ingresados por el usuario
 
-    print_r($_POST);
+    if($stmt->execute()) // Valida si los datos que va a insertar no están repetidos vía la unisidad del correo
+    {
+        header("Location: ../html/iniciarSesion.html");
+        
+        // Cerramos la conexion
+		@mysqli_close($link);
+    }
+    else
+    {
 
-    var_dump($contrasenia_hash);
+        if($stmt->errno === 1062)  // Valida si el correo es el problema
+        {
+            die("El email ingresado ya está registrado.");
+        } 
+        else 
+        {
+            die($link->error . " " . $link->errno);  //el error es otro si el correo no es el problema
+        }
+    }
 
 ?>
