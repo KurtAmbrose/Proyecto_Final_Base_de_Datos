@@ -24,8 +24,20 @@ body {
     overflow: hidden;
 }
 
+/* ---- Página de registrarse, estilos propios ----*/
+
 #box2 {
     height: 590px;
+}
+
+/* ---- subpágina de registro exitoso, estilos propios ----*/
+
+#box3 {
+    height: 350px;
+}
+
+.titulo {
+    margin-bottom: 60px;
 }
 
 /** ---- Elementos animados ---- **/

@@ -23,7 +23,7 @@
         die("El usuario no debe de pasar de los 25 caracteres");
     }
 
-    if(strlen($_POST["correo"]) > 20) //verifica si el correo es del tamaño adecuado
+    if(strlen($_POST["correo"]) > 255) //verifica si el correo es del tamaño adecuado
     {
         die("El correo no debe de pasar de los 20 caracteres");
     }
@@ -71,8 +71,8 @@
 
     if($stmt->execute()) // Valida si los datos que va a insertar no están repetidos vía la unisidad del correo
     {
-        header("Location: ../html/iniciarSesion.html");
-        
+        header("Location: ../html/SubPaginas_html/registroExitoso.html");
+
         // Cerramos la conexion
 		@mysqli_close($link);
     }
