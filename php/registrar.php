@@ -10,7 +10,7 @@
  * 
  * @date Fecha de creación del archivo: 30 de Noviembre del 2023
  * 
- * @date Última Actualización: 30 de Noviembre del 2023
+ * @date Última Actualización: 1 de Diciembre del 2023
  * 
  */
 
@@ -75,18 +75,19 @@
 
         // Cerramos la conexion
 		@mysqli_close($link);
+
+        exit;
     }
     else
     {
 
         if($stmt->errno === 1062)  // Valida si el correo es el problema
         {
-            die("El email ingresado ya está registrado.");
+            die("El email o el usuario ingresado ya está registrado.");
         } 
         else 
         {
             die($link->error . " " . $link->errno);  //el error es otro si el correo no es el problema
         }
     }
-
 ?>

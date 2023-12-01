@@ -9,39 +9,71 @@
  * 
  * @date Elaborado el día 30 de Noviembre del 2023
  * 
- * @date Última actualización: 30 de Noviembre del 2023
+ * @date Última actualización: 1 de Diciembre del 2023
  */
 
  require_once "HTML/Template/ITX.php";
 
- // Se obtienen los datos ingresados en la página de iniciar sesión
+ $es_invalido = false; //validación de la contraseña
 
- if ($_SERVER["REQUEST_METHOD"] === "POST")
+ if ($_SERVER["REQUEST_METHOD"] === "POST") //verifica si se posteó la forma    
  {
-    if(filter_var($_POST["dato1"], FILTER_VALIDATE_EMAIL))
+
+    // verifica si se ingreso un correo o un usuario
+
+    if(! filter_var($_POST["dato1"], FILTER_VALIDATE_EMAIL))
     {
-        $link = require __DIR__ ."/connect.php"; //Se conecta a la base de datos
+        $mysqli = require __DIR__ . "/connect.php";         // Se conecta a la base de datos
 
-        $query = sprintf("SELECT * FROM proy_usuarios WHERE correo = '%s'", $link->real_escape_string($_POST["dato1"]));  // Se realiza el query imprimiento este en una variable. real_escape_string sirve para evitar la inyección de código en el email
+        //Obitene el query y verifica si no hay algún mysql inyection
 
-        $result = mysqli_query($link, $query); //obtiene el resultado del query
+        $query = sprintf("SELECT * FROM proy_usuarios WHERE nombre = '%s'", $mysqli->real_escape_string($_POST["dato1"]));
 
-        $usario = $result->fetch_assoc(); //busca un dato asociado a uno de los datos insertados en la página de iniciar sesión
-        
-        var_dump($usuario);
+        $res = $mysqli->query($query); // obtiene el resultado del query
 
-        @mysqli_close($link); //sale de la base de datos   
+        $row = $res->fetch_assoc(); // almacena el resultado en una variable $row
+
+        if($row) // validación si el row tiene datos diferentes de NULL
+        {
+            if(password_verify($_POST["contrasenia"], $row["clave_hash"])) //Validación si la contraseña es correcta
+            {
+                die("Ingresaste con éxito");
+            }
+        }
+
+        $es_invalido = true;
+
     }
 
     else
     {
-        die("ingresa un correo");
-    }
- }
 
- else
- {
-    die("este...no sé");
+        $mysqli = require __DIR__ . "/connect.php";         // Se conecta a la base de datos
+
+        //Obitene el query y verifica si no hay algún mysql inyection
+
+        $query = sprintf("SELECT * FROM proy_usuarios WHERE correo = '%s'", $mysqli->real_escape_string($_POST["dato1"]));
+
+        $res = $mysqli->query($query); // obtiene el resultado del query
+
+        $row = $res->fetch_assoc(); // almacena el resultado en una variable $row
+
+        if($row) // validación si el row tiene datos diferentes de NULL
+        {
+            if(password_verify($_POST["contrasenia"], $row["clave_hash"])) //Validación si la contraseña es correcta
+            {
+                die("Ingresaste con éxito");
+            }
+        }
+        
+    }
+
+    // Cerramos la conexion
+    @mysqli_close($link);
+
+    
+    exit;
+
  }
 
 ?>
