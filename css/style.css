@@ -1,0 +1,208 @@
+body {
+    font-family: 'Monocraft';
+    font-size: 16px;
+}
+
+/** ----------- ENCABEZADO ------------- **/
+
+#encabezado {
+    color: #ffff;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 30px;
+}
+
+#principal {
+    text-decoration: none;
+}
+
+#logo {
+    width: 130px;
+    height: 130px;
+    margin: 0;
+    padding: 0;
+    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(105deg) brightness(107%) contrast(101%);
+}
+
+#gob-mexico {
+    width: 300px;
+    height: 88px;
+    margin: 0;
+    padding: 0px;
+}
+
+/** ----------- FIN DEL ENCABEZADO ------------- **/
+
+/** ----------- CUERPO DE LA PÁGINA PRINCIPAL ------------- **/
+
+/** ------- Título ------ **/
+
+#palacio-nacional {
+    background-image: url(../pictures/palacioNacional/Palacio_Nacional\,_México_D.F.\,_México\,_2013-10-16\,_DD_119.jpg);
+    background-repeat: no-repeat;
+    height: 700px;
+    background-position: center;
+}
+
+#logo-titulo h1 {
+    font-size: 70px;
+    font-family: 'Cascadia Code';
+    font-style: oblique;
+}
+
+h1 > :nth-child(1) {
+    background-color: #ffff;
+    opacity: .7;
+}
+
+#bandera-mexico {
+    width: 600px;
+    height: 500px;
+}
+
+#titulo {
+    background-color: black;
+    opacity: .85;
+    color:#ffff;
+}
+
+#titulo p {
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+#titulo p span {
+    font-weight: bolder;
+    font-style: oblique;
+    color: #C8102E;
+}
+
+.label-opciones {
+    margin-top: 40px;
+    font-size: 45px;
+    margin-bottom: 60px;
+}
+
+/** ------- Fin del Título ------ **/
+
+/** ------- Opciones tiles ------ **/
+
+.opciones-tiles {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 50px;
+}
+
+.opciones-tiles img {
+    width: 170px;
+    height: 170px;
+    filter: invert(24%) sepia(10%) saturate(944%) hue-rotate(183deg) brightness(93%) contrast(87%);
+}
+
+.opciones-tiles span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    background-color: #000;
+    color: #fff;
+    opacity: .7;
+    padding-top: 2px;
+}
+
+.opciones-tiles:hover {
+    border: 3px solid  #3e4451;
+    box-shadow: 0, 1px, 5px, 1px #3e4451;
+    opacity: .9;
+}
+
+/** ------- Fin de Opciones tiles ------ **/
+
+/** ----------- FIN CUERPO DE LA PÁGINA PRINCIPAL ------------- **/
+
+/** ------------- MEDIA QUERIES PARA DISPOSITIVOS EXTRA PEQUEÑOS --------------- **/
+
+@media (min-width: 322px) and (max-width: 575px) {
+
+    #palacio-nacional {
+        background-image: url(../pictures/palacioNacional/Palacio_Nacional\,_México_D.F.\,_México\,_2013-10-16\,_DD_119\(2\).jpg);
+        height: 350px;
+    }
+
+    #gob-mexico {
+        width: 150px;
+    }
+
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #logo-titulo h1 {
+        font-size: 30px;
+    }
+
+    #bandera-mexico {
+        width: 300px;
+        height: 200px;
+    }
+
+    #titulo p {
+        font-size: 15px;
+    }
+
+    .label-opciones {
+        font-size: 30px;
+    }
+
+    .tituloMostrarTodos {
+        font-size: 20px;
+    }
+}
+
+
+/** ------------- MEDIA QUERIES PARA DISPOSITIVOS EXTRA EXTRA PEQUEÑOS --------------- **/
+@media (max-width: 321px) {
+
+    #palacio-nacional {
+        background-image: url(../pictures/palacioNacional/Palacio_Nacional\,_México_D.F.\,_México\,_2013-10-16\,_DD_119\(2\).jpg);
+        height: 350px;
+    }
+
+    #gob-mexico {
+        width: 110px;
+    }
+
+    #logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    #logo-titulo h1 {
+        font-size: 20px;
+    }
+
+    #bandera-mexico {
+        width: 250px;
+        height: 150px;
+    }
+
+    #titulo p {
+        font-size: 15px;
+    }
+
+    .label-opciones {
+        font-size: 25px;
+    }
+
+    .tituloMostrarTodos {
+        font-size: 12px;
+    }
+}

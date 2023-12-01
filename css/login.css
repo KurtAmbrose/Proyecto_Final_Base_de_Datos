@@ -1,0 +1,219 @@
+/** ---------- PAGINA DE LOGIN ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Monocraft';
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.box {
+    position: relative;
+    width: 380px;
+    height: 480px;
+    background-color: #1b1c1e;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#box2 {
+    height: 590px;
+}
+
+/** ---- Elementos animados ---- **/
+
+.box:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 390px;
+    height: 480px;
+    background: linear-gradient(0deg, transparent, transparent, #006341, #006341, #006341);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.box:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 390px;
+    height: 480px;
+    background: linear-gradient(0deg, transparent, transparent, #006341, #006341, #006341);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+
+.lineaBorde {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.lineaBorde:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 390px;
+    height: 480px;
+    background: linear-gradient(0deg, transparent, transparent, #97952f, #97952f, #97952f);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -1.7s;
+}
+
+.lineaBorde:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 390px;
+    height: 480px;
+    background: linear-gradient(0deg, transparent, transparent, #97952f, #97952f, #97952f);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -4.7s;
+}
+
+/** ---- Animaciones para el efecto de rayos ---- **/
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/** ---- Estilos que terminan de reacomodar bien los elementos de la página de "Iniciar Sesión" ---- **/
+
+.box form {
+    position: absolute;
+    inset: 4px;
+    background-color: #222;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2 {
+    color: #ffff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.box form .inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    color:#23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+    border: none;
+}
+
+.box form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.box form .inputBox input:valid ~ span, .box form .inputBox input:focus ~ span {
+    color: #ffff;
+    font-size: .75em;
+    transform: translateY(-34px);
+}
+
+.box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.box form .inputBox input:valid ~ i, .box form .inputBox input:focus ~ i {
+    height: 44px;
+}
+
+.box form .links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+
+}
+
+.box form .links a {
+    margin: 10px 0;
+    font-size: 0.75em;
+    color:#8f8f8f;
+    text-decoration: none;
+
+}
+
+.box form .links a:hover, .box form .links a:nth-child(2) {
+    color: #ffff;
+}
+
+.box form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    background-color: #006341;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.box form input[type="submit"]:active {
+    opacity: 0.8;
+}
