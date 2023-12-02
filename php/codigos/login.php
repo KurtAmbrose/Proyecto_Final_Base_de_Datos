@@ -12,8 +12,6 @@
  * @date Última actualización: 2 de Diciembre del 2023
  */
 
- require_once "HTML/Template/ITX.php";
-
  $es_invalido = false; //validación de los datos
 
  if ($_SERVER["REQUEST_METHOD"] === "POST") //verifica si se envió la forma de inciar sesión 
@@ -37,18 +35,13 @@
         {
             if(password_verify($_POST["contrasenia"], $row["clave_hash"])) //Validación si la contraseña es correcta
             {
+                // Cerramos la conexion
+                @mysqli_close($mysqli);
                 die("Ingresaste con éxito");
             }
-            else
-            {
-                $es_invalido = true; //contraseña no coincide 
-                
-            }
         }
-        else
-        {
-            $es_invalido = true; //no hay datos existentes
-        }
+
+        $es_invalido = true;
     }
 
     // En el caso de que se ingresara un usuario
@@ -70,23 +63,13 @@
         {
             if(password_verify($_POST["contrasenia"], $row["clave_hash"])) //Validación si la contraseña es correcta
             {
+                // Cerramos la conexion
+                @mysqli_close($mysqli);
                 die("Ingresaste con éxito");
             }
-            else
-            {
-                $es_invalido = true; //contraseña no coincide
-            }
         }
-        else
-        {
-            $es_invalido = true; //no hay datos existentes
-        }
-        
+
+        $es_invalido = true;
     }
-
-    // Cerramos la conexion
-    @mysqli_close($link);
-    exit;
  }
-
 ?>

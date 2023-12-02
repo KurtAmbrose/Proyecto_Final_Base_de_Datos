@@ -14,8 +14,6 @@
  * 
  */
 
-    require_once "HTML/Template/ITX.php";
-
     // ----- valida los datos para ver si son correctos antes de hacer algo con ellos ----
 
     if(strlen($_POST["usuario"]) > 25) //verifica si el usuario es del tamaño adecuado
