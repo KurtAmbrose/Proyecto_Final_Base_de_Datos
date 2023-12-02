@@ -71,12 +71,7 @@
 
     if($stmt->execute()) // Valida si los datos que va a insertar no están repetidos vía la unisidad del correo
     {
-        header("Location: ../html/SubPaginas_html/registroExitoso.html");
-
-        // Cerramos la conexion
-		@mysqli_close($link);
-
-        exit;
+        header("Location: ../../html/SubPaginas_html/registroExitoso.html");
     }
     else
     {
@@ -90,4 +85,9 @@
             die($link->error . " " . $link->errno);  //el error es otro si el correo no es el problema
         }
     }
+
+    // Cerramos la conexion
+	@mysqli_close($link);
+
+    exit;
 ?>
