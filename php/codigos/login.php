@@ -12,7 +12,7 @@
  * @date Última actualización: 2 de Diciembre del 2023
  */
 
- $es_invalido = false; //validación de los datos
+ $es_invalido = false; //validación de los datos ingresados, si llega a ser true entonces no dejará ingresar
 
  if ($_SERVER["REQUEST_METHOD"] === "POST") //verifica si se envió la forma de inciar sesión 
  {
@@ -41,7 +41,7 @@
             }
         }
 
-        $es_invalido = true;
+        $es_invalido = true; //hubo un error al iniciar sesi+on por contraseña o correo/usuario incorrectos
     }
 
     // En el caso de que se ingresara un usuario
@@ -69,7 +69,7 @@
             }
         }
 
-        $es_invalido = true;
+        $es_invalido = true; //hubo un error al iniciar sesi+on por contraseña o correo/usuario incorrectos
     }
  }
 ?>

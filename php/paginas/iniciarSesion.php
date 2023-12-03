@@ -24,7 +24,7 @@
                 <?php endif; ?>
 
                 <div class="inputBox">
-                    <input type="text" required="required" name="dato1">
+                    <input type="text" required="required" name="dato1" value="<?= htmlspecialchars($_POST["dato1"] ?? "") ?>"> <!-- Mantiene este campo cuando se le da refresh a la página -->
                     <span>Usuario o correo</span>
                     <i></i>
                 </div>
