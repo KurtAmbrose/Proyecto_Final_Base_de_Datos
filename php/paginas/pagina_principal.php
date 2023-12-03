@@ -1,3 +1,22 @@
+<?php
+
+/**
+ * @file pagina_principal.php
+ * 
+ * @brief Este archivo se manda a llamar una vez se inicia la sesión con éxito. La página es una copia del html, sólo que este si interactúa con el usuario
+ * 
+ * @author Diego Bravo Pérez y Javier Lachica Sanchéz
+ * 
+ * @date Fecha de creación: 2 de Diciembre del 2023
+ * 
+ * @date Última actualización: 3 de Diciembre del 2023
+ */
+
+ session_start(); //inicia sesión con éxito
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es-419">
 <head>
@@ -12,6 +31,17 @@
 </head>
 <body>
 
+    <!-------- VALIDACIÓN SI SE INICIÓ SESIÓN ------->
+
+    <?php
+
+      if(!isset($_SESSION["user"])) //si no hay ningún usuario que inició sesión, redirige al archivo html de la página principal
+      {
+          header("Location: ../../html/Paginas/mainMenu.html");
+          exit;
+      }
+    ?>
+
     <!--------Encabezado-------->
 
     <header>
@@ -19,13 +49,11 @@
             <div class="container-fluid">
                 <div class="col-lg-4 col-md-3 col-sm-3 col-12 navbar-brand text-lg-start text-md-start text-sm-start text-center"><a id="principal" class="navbar-brand" href="#"><img id="gob-mexico" class="img-fluid" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="bandera-mexico"></a></div>
                 <div class="col-sm-auto col-12 navbar-brand text-center text-info-emphasis">
-                  <a class="link-danger text-decoration-none link-opacity-75-hover link-offset-3" href="../../php/paginas/iniciarSesion.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-person-circle" viewBox="0 0 16 16">
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg>
-                    <span class="text-uppercase fw-bolder">Iniciar sesión</span>
-                  </a>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg>
+                  <span class="text-uppercase fw-bolder">¡Hola <?= htmlspecialchars($_SESSION["user"] ?? "") ?>!</span>
                 </div>
                 <div class="col-lg-4 col-md-3 col-sm-3 col-12 navbar-brand text-lg-end text-md-end text-sm-end text-center"><img id="logo" class="img-fluid" src="https://www.logha.mx/wp-content/uploads/2022/05/universidad-iberoamericana-ibero-logo-vector-300x300.png" alt="logo-ibero"></div>
             </div>
@@ -45,7 +73,7 @@
                 <img id="bandera-mexico" class="img-fluid" src="https://png.pngtree.com/png-clipart/20221222/original/pngtree-flag-of-mexico-png-image_8797173.png" alt="bandera-mexico">
             </div>
             <div id="titulo" class="col-lg-12 col-md-12 col-sm-12 text-center">
-                <p>Para acceder a la página de <span>Presidentes de México,</span> debes iniciar sesión :].</p>
+                <p>Bienvenido a la página de <span>Presidentes de México</span>. ¡¡¡Conoce a todos los que gobernaron nuestro país!!!</p>
             </div>
         </div>
 
@@ -54,10 +82,10 @@
         <!------Resto del cuerpo------>
 
         <div class="row text-center">
-            <span class="label-opciones">Cuando inicies sesión podrás buscar:</span>
+            <span class="label-opciones">Opciones para buscar:</span>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <a href="../../php/paginas/iniciarSesion.php">
+                <a href="#">
                   <div class="opciones-tiles">
                     <img src="https://th.bing.com/th/id/R.bae2d37c4317140a408aef6671346186?rik=X1vYbxH6nQxCcA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_218090.png&ehk=poXsiWmpbb3%2b%2bK%2blj8H9AQprCYsoz4kt%2bU4rFFKbOCo%3d&risl=&pid=ImgRaw&r=0" alt="Persona">
                     <span>Nombre</span>
@@ -66,7 +94,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <a href="../../php/paginas/iniciarSesion.php">
+                <a href="#">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/42/42446.png" alt="Calendario">
                     <span>Fecha de nacimiento</span>
@@ -75,7 +103,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <a href="../../php/paginas/iniciarSesion.php">
+                <a href="#">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/450/450016.png" alt="Ubicación">
                     <span>Estado de nacimiento</span>
@@ -84,7 +112,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <a href="../../php/paginas/iniciarSesion.php">
+                <a href="./mostrarTodos.html">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/2285/2285516.png" alt="Lista">
                     <span>Mostrar todos</span>
@@ -121,6 +149,8 @@
                     <h5>Links</h5>
                     <ul class="list-unstyled">
                       <li class="mb-2"><a href="#">Home</a></li>
+                      <li class="mb-2"><a href="#">Mostrar Presidentes</a></li>
+                      <li class="mb-2"><a href="../codigos/logout.php">Cerrar sesión</a></li>
                       <li class="mb-2"><a href="#">Olvidé mi contraseña</a></li>
                     </ul>
                 </div>
@@ -129,5 +159,6 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

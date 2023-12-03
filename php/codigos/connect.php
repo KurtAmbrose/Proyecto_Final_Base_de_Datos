@@ -10,7 +10,7 @@
  * 
  * @date fecha de creación: 30 de noviembre del 2023
  * 
- * @date última actualización: 30 de noviembre del 2023
+ * @date última actualización: 2 de Diciembre del 2023
  */
 
 /**

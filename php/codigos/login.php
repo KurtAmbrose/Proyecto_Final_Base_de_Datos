@@ -9,7 +9,7 @@
  * 
  * @date Elaborado el día 30 de Noviembre del 2023
  * 
- * @date Última actualización: 2 de Diciembre del 2023
+ * @date Última actualización: 3 de Diciembre del 2023
  */
 
  $es_invalido = false; //validación de los datos ingresados, si llega a ser true entonces no dejará ingresar
@@ -35,9 +35,16 @@
         {
             if(password_verify($_POST["contrasenia"], $row["clave_hash"])) //Validación si la contraseña es correcta
             {
+                session_start(); //Se inicia sesión
+
+                $_SESSION["user"] = $row["nombre"]; //se guarda el nombre del usuario en la variable superglobal 
+
+                header("Location: ../paginas/pagina_principal.php"); //redirige a la página principal
+
                 // Cerramos la conexion
                 @mysqli_close($mysqli);
-                die("Ingresaste con éxito");
+
+                exit;
             }
         }
 
@@ -63,9 +70,17 @@
         {
             if(password_verify($_POST["contrasenia"], $row["clave_hash"])) //Validación si la contraseña es correcta
             {
+
+                session_start(); //Se inicia sesión
+
+                $_SESSION["user"] = $row["nombre"]; //se guarda el id del usuario en la variable superglobal 
+
+                header("Location: ../paginas/pagina_principal.php"); //redirige a la página principal
+
                 // Cerramos la conexion
                 @mysqli_close($mysqli);
-                die("Ingresaste con éxito");
+
+                exit;
             }
         }
 
