@@ -16,7 +16,7 @@
 
     // ----- valida los datos para ver si son correctos antes de hacer algo con ellos ----
 
-    if(strlen($_POST["usuario"]) > 25) //verifica si el usuario es del tamaño adecuado
+    if(strlen($_POST["usuario"]) > 10) //verifica si el usuario es del tamaño adecuado
     {
         die("El usuario no debe de pasar de los 25 caracteres");
     }

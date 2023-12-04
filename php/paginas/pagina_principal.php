@@ -151,7 +151,7 @@
                       <li class="mb-2"><a href="#">Home</a></li>
                       <li class="mb-2"><a href="#">Mostrar Presidentes</a></li>
                       <li class="mb-2"><a href="../codigos/logout.php">Cerrar sesión</a></li>
-                      <li class="mb-2"><a href="#">Olvidé mi contraseña</a></li>
+                      <li class="mb-2"><a class="nav-link disabled" aria-disabled="true" href="#">Olvidé mi contraseña</a></li>
                     </ul>
                 </div>
             

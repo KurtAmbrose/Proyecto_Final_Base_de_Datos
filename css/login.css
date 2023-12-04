@@ -281,23 +281,23 @@ body {
     /** ---- Elementos animados ---- **/
     
     .box:before {
-        width: 250px;
-        height: 560px;
+        width: 260px;
+        height: 420px;
     }
     
     .box:after {
-        width: 250px;
-        height: 560px;
+        width: 260px;
+        height: 420px;
     }
     
     .lineaBorde:before {
-        width: 250px;
-        height: 560px;
+        width: 260px;
+        height: 420px;
     }
     
     .lineaBorde:after {
-        width: 250px;
-        height: 560px;
+        width: 260px;
+        height: 420px;
     }
     
     

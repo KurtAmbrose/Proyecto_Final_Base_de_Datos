@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-419">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">Olvidé mi contraseña :&#40;</a>
+                    <a class="nav-link disabled" aria-disabled="true" href="#">Olvidé mi contraseña :&#40;</a>
                     <a href="../../html/Paginas/registrarse.html">Registrarse</a>
                 </div>
                 

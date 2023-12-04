@@ -155,7 +155,9 @@ h1 > :nth-child(1) {
     }
 
     #titulo p {
-        font-size: 15px;
+        margin-top: 10px;
+        font-size: 10px;
+        padding-top: 7px;
     }
 
     .label-opciones {
@@ -195,7 +197,10 @@ h1 > :nth-child(1) {
     }
 
     #titulo p {
-        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 10px;
+        padding-top: 7px;
     }
 
     .label-opciones {
