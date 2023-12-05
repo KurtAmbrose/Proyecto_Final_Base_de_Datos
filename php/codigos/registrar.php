@@ -69,7 +69,7 @@
 
     if($stmt->execute()) // Valida si los datos que va a insertar no están repetidos vía la unisidad del correo
     {
-        header("Location: ../../html/SubPaginas_html/registroExitoso.html");
+        header("Location: ../../html/templates/registroExitoso.html");
     }
     else
     {

@@ -9,7 +9,7 @@
  * 
  * @date Fecha de creación: 2 de Diciembre del 2023
  * 
- * @date Última actualización: 3 de Diciembre del 2023
+ * @date Última actualización: 5 de Diciembre del 2023
  */
 
  session_start(); //inicia sesión con éxito
@@ -84,16 +84,7 @@
         <div class="row text-center">
             <span class="label-opciones">Opciones para buscar:</span>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <a href="#">
-                  <div class="opciones-tiles">
-                    <img src="https://th.bing.com/th/id/R.bae2d37c4317140a408aef6671346186?rik=X1vYbxH6nQxCcA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_218090.png&ehk=poXsiWmpbb3%2b%2bK%2blj8H9AQprCYsoz4kt%2bU4rFFKbOCo%3d&risl=&pid=ImgRaw&r=0" alt="Persona">
-                    <span>Nombre</span>
-                  </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <a href="#">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/42/42446.png" alt="Calendario">
@@ -102,7 +93,7 @@
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <a href="#">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/450/450016.png" alt="Ubicación">
@@ -111,8 +102,8 @@
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <a href="./mostrarTodos.html">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <a href="../../php/codigos/mostrarPresidentes.php">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/2285/2285516.png" alt="Lista">
                     <span>Mostrar todos</span>
@@ -149,7 +140,7 @@
                     <h5>Links</h5>
                     <ul class="list-unstyled">
                       <li class="mb-2"><a href="#">Home</a></li>
-                      <li class="mb-2"><a href="#">Mostrar Presidentes</a></li>
+                      <li class="mb-2"><a href="../../php/paginas/mostrarPresidentes.php">Mostrar Presidentes</a></li>
                       <li class="mb-2"><a href="../codigos/logout.php">Cerrar sesión</a></li>
                       <li class="mb-2"><a class="nav-link disabled" aria-disabled="true" href="#">Olvidé mi contraseña</a></li>
                     </ul>
