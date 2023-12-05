@@ -139,8 +139,8 @@
                 <div class="col-6 col-lg-3 offset-lg-2 mb-3">
                     <h5>Links</h5>
                     <ul class="list-unstyled">
-                      <li class="mb-2"><a href="#">Home</a></li>
-                      <li class="mb-2"><a href="../../php/paginas/mostrarPresidentes.php">Mostrar Presidentes</a></li>
+                      <li class="mb-2"><a class="nav-link active" href="#">Home</a></li>
+                      <li class="mb-2"><a href="../../php/codigos/mostrarPresidentes.php">Mostrar Presidentes</a></li>
                       <li class="mb-2"><a href="../codigos/logout.php">Cerrar sesión</a></li>
                       <li class="mb-2"><a class="nav-link disabled" aria-disabled="true" href="#">Olvidé mi contraseña</a></li>
                     </ul>

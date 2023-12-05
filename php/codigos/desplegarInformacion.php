@@ -3,11 +3,11 @@
 /**
  * @file mostrarPresidentes.php
  * 
- * @brief Este documento carga los templates respectivos y muestar todos los presidentes registrados
+ * @brief Este documento carga los templates respectivos y muestar el presidente seleccionado
  * 
  * @author Diego Bravo Pérez y Javier Lachica Sánchez
  * 
- * @date Fecha de elaboración: 4 de Diciembre del 2023
+ * @date Fecha de elaboración: 5 de Diciembre del 2023
  * 
  * @date Última Actualización: 5 de Diciembre del 2023
  */
@@ -29,12 +29,16 @@
 
 	$template = new HTML_Template_ITX("../../html/templates");
 
-	$template->loadTemplatefile("mostrarTodos.html", true, true);
+	$template->loadTemplatefile("registro.html", true, true);
 
 	// Nos conectamos a la base de datos
 	$link = require __DIR__ . "/connect.php";
+
+    $template->setCurrentBlock("CONTENIDO");
+    $template->setVariable("CONTENIDO", "Juan");
+
 	
-	$query = "SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre, imagen FROM proy_presidentes";
+	//$query = "SELECT * FROM proy_presidentes INNER JOIN proy_partidos USING(idPartidos);";
 
 	// ========================================================================
 	//
@@ -42,9 +46,7 @@
 	// 
 	// ========================================================================	
 	
-	$template->addBlockfile("CONTENIDO", "TABLA", "bloquePresidente.html");
-	$template->setCurrentBlock("TABLA");
-	
+    /*
 	// Ejecutamos el query
 	$result = mysqli_query($link, $query) or die("Query 1 failed");
 						
@@ -66,6 +68,7 @@
 	
 	// Cerramos la conexion
 	@mysqli_close($link);
+    */
 
     // Mostramos la pagina con los templates que llenamos
 	$template->show();

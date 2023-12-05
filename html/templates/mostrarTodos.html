@@ -19,9 +19,6 @@
         <nav id="encabezado" class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
                 <div class="col-lg-4 col-md-3 col-sm-3 col-12 navbar-brand text-lg-start text-md-start text-sm-start text-center"><a id="principal" class="navbar-brand" href="../../php/paginas/pagina_principal.php"><img id="gob-mexico" class="img-fluid" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="bandera-mexico"></a></div>
-                <div class="col-sm-auto col-12 navbar-brand text-center text-info-emphasis">
-                  
-                </div>
                 <div class="col-lg-4 col-md-3 col-sm-3 col-12 navbar-brand text-lg-end text-md-end text-sm-end text-center"><img id="logo" class="img-fluid" src="https://www.logha.mx/wp-content/uploads/2022/05/universidad-iberoamericana-ibero-logo-vector-300x300.png" alt="logo-ibero"></div>
             </div>
         </nav>
@@ -37,15 +34,20 @@
 
       <div class="container-fluid">
         <div class="row text-center">
+          <div class="col-12 row justify-content-center ps-4">
+            <div class="col-lg-7 col-md-8 col-sm-10 col-12 mb-5">
+              <form class="d-flex" role="search">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+            {CONTENIDO}
+          </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-          {CONTENIDO}
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-          {IMAGEN}
-        </div>
-
+          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+            {IMAGEN}
+          </div>
       </div>
 
     </div>
@@ -74,8 +76,8 @@
               <div class="col-6 col-lg-3 offset-lg-2 mb-3">
                   <h5>Links</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#">Home</a></li>
-                    <li class="mb-2"><a href="../../php/paginas/mostrarPresidentes.php">Mostrar Presidentes</a></li>
+                    <li class="mb-2"><a href="../../php/paginas/pagina_principal.php">Home</a></li>
+                    <li class="mb-2"><a class="nav-link active" href="#">Mostrar Presidentes</a></li>
                     <li class="mb-2"><a href="../codigos/logout.php">Cerrar sesión</a></li>
                     <li class="mb-2"><a class="nav-link disabled" aria-disabled="true" href="#">Olvidé mi contraseña</a></li>
                   </ul>
