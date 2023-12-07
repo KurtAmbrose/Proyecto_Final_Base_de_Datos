@@ -167,6 +167,10 @@ h1 > :nth-child(1) {
     .tituloMostrarTodos {
         font-size: 20px;
     }
+
+    #filtrar-por {
+        font-size: 15px;
+    }
 }
 
 
@@ -209,5 +213,9 @@ h1 > :nth-child(1) {
 
     .tituloMostrarTodos {
         font-size: 12px;
+    }
+
+    #filtrar-por {
+        font-size: 10px;
     }
 }

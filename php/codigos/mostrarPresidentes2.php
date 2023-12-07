@@ -7,9 +7,9 @@
  * 
  * @author Diego Bravo Pérez y Javier Lachica Sánchez
  * 
- * @date Fecha de elaboración: 4 de Diciembre del 2023
+ * @date Fecha de elaboración: 6 de Diciembre del 2023
  * 
- * @date Última Actualización: 5 de Diciembre del 2023
+ * @date Última Actualización: 7 de Diciembre del 2023
  */
 	require_once "HTML/Template/ITX.php";
 
@@ -29,7 +29,7 @@
 
 	$template = new HTML_Template_ITX("../../html/templates");
 
-	$template->loadTemplatefile("mostrarTodos.html", true, true);
+	$template->loadTemplatefile("mostrarPorEstado.html", true, true);
 
 	
 	// ========================================================================
@@ -41,12 +41,12 @@
 	$template->addBlockfile("CONTENIDO", "TABLA", "bloquePresidente.html");
 	$template->setCurrentBlock("TABLA");
 
-	if(isset($_GET['buscarNombre']))
+	if(isset($_GET['buscarEstado']))
 	{
         // Nos conectamos a la base de datos
         $link = require __DIR__ . "/connect.php";
         
-        $query = sprintf("SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre FROM proy_presidentes HAVING nombre LIKE '%%%s%%'", $link->real_escape_string($_GET["filtroNom"]));
+        $query = sprintf("SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre FROM proy_presidentes INNER JOIN proy_ciudades ON idCiudadNacimiento = idCiudad INNER JOIN proy_estados USING(idEstado) WHERE estado LIKE '%%%s%%'", $link->real_escape_string($_GET["filtroEstado"]));
         
         // Ejecutamos el query
         $result = mysqli_query($link, $query) or die("Query 1 failed");

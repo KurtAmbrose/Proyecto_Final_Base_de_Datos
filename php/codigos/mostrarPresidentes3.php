@@ -29,7 +29,7 @@
 
 	$template = new HTML_Template_ITX("../../html/templates");
 
-	$template->loadTemplatefile("mostrarTodos.html", true, true);
+	$template->loadTemplatefile("mostrarPorFecha.html", true, true);
 
 	
 	// ========================================================================
@@ -41,12 +41,12 @@
 	$template->addBlockfile("CONTENIDO", "TABLA", "bloquePresidente.html");
 	$template->setCurrentBlock("TABLA");
 
-	if(isset($_GET['buscarNombre']))
+	if(isset($_GET['buscarFecha']))
 	{
         // Nos conectamos a la base de datos
         $link = require __DIR__ . "/connect.php";
         
-        $query = sprintf("SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre FROM proy_presidentes HAVING nombre LIKE '%%%s%%'", $link->real_escape_string($_GET["filtroNom"]));
+        $query = sprintf("SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre FROM proy_presidentes WHERE nacimiento = '%s'", $link->real_escape_string($_GET["filtroFecha"]));
         
         // Ejecutamos el query
         $result = mysqli_query($link, $query) or die("Query 1 failed");
@@ -97,7 +97,7 @@
 			}// while
 			
 			
-		$template->parseCurrentBlock("PRESIDENTE");
+		$template->parseCurrentBlock("PRESIDENTES");
 
 		// Liberamos memoria
 		mysqli_free_result($result);

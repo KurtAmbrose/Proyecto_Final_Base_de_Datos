@@ -27,6 +27,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link href="../../css/style.css" rel="stylesheet">
+    <link rel="icon" href="https://png.pngtree.com/png-clipart/20221222/original/pngtree-flag-of-mexico-png-image_8797173.png" type="image/x-icon">
     <title>Proyecto final</title>
 </head>
 <body>
@@ -82,10 +83,10 @@
         <!------Resto del cuerpo------>
 
         <div class="row text-center">
-            <span class="label-opciones">Opciones para buscar:</span>
+            <span class="label-opciones"> Ahora si <?= htmlspecialchars($_SESSION["user"] ?? "") ?>, ya puedes seleccionar cualquier opción</span>
 
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <a href="#">
+                <a href="../../php/codigos/mostrarPresidentes3.php">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/42/42446.png" alt="Calendario">
                     <span>Fecha de nacimiento</span>
@@ -94,7 +95,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <a href="#">
+                <a href="../../php/codigos/mostrarPresidentes2.php">
                   <div class="opciones-tiles">
                     <img src="https://cdn-icons-png.flaticon.com/512/450/450016.png" alt="Ubicación">
                     <span>Estado de nacimiento</span>
