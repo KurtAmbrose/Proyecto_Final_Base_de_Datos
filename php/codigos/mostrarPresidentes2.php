@@ -50,8 +50,10 @@
         
         // Ejecutamos el query
         $result = mysqli_query($link, $query) or die("Query 1 failed");
-                            
-        while($line = mysqli_fetch_assoc($result)){
+
+		if(mysqli_num_rows($result) > 0) //Si existe información en la base de datos
+		{
+			while($line = mysqli_fetch_assoc($result)){
             
                 // Fijamos el bloque con la informacion de cada presidente
                 $template->setCurrentBlock("PRESIDENTE");
@@ -63,7 +65,15 @@
             }// while
             
             
-        $template->parseCurrentBlock("PRESIDENTE");
+        	$template->parseCurrentBlock("PRESIDENTE");
+
+		}
+		else //Si no hay resultados en la búsqueda
+		{
+			// Fijamos el bloque con la informacion de cada presidente
+			$template->setCurrentBlock("MENSAJE");
+			$template->setVariable("MENSAJE", "<em id= \"noEncontrado\" class= \"text-danger\">No hay presidentes registrados que hayan nacido en ese estado.</em>");
+		}
 
         // Liberamos memoria
         mysqli_free_result($result);

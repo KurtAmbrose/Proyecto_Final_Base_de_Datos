@@ -171,6 +171,10 @@ h1 > :nth-child(1) {
     #filtrar-por {
         font-size: 15px;
     }
+
+    #noEncontrado {
+        font-size: 10px;
+    }
 }
 
 
@@ -217,5 +221,9 @@ h1 > :nth-child(1) {
 
     #filtrar-por {
         font-size: 10px;
+    }
+
+    #noEncontrado {
+        font-size: 5px;
     }
 }
