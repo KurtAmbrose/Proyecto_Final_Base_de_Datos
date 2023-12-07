@@ -7,9 +7,9 @@
  * 
  * @author Diego Bravo Pérez y Javier Lachica Sánchez
  * 
- * @date Fecha de elaboración: 6 de Diciembre del 2023
+ * @date Fecha de elaboración: 4 de Diciembre del 2023
  * 
- * @date Última Actualización: 7 de Diciembre del 2023
+ * @date Última Actualización: 5 de Diciembre del 2023
  */
 	require_once "HTML/Template/ITX.php";
 
@@ -46,7 +46,7 @@
         // Nos conectamos a la base de datos
         $link = require __DIR__ . "/connect.php";
         
-        $query = sprintf("SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre FROM proy_presidentes INNER JOIN proy_ciudades ON idCiudadNacimiento = idCiudad INNER JOIN proy_estados USING(idEstado) WHERE estado LIKE '%%%s%%'", $link->real_escape_string($_GET["filtroEstado"]));
+        $query = sprintf("SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre, edad, muerte, nacimiento, fechaInicio, fechaFin, partido, ciudad, estado, info, imagen FROM proy_presidentes LEFT JOIN proy_periodos USING(idPresidente) LEFT JOIN proy_partidos USING(idPartido) LEFT JOIN proy_ciudades ON idCiudadNacimiento = idCiudad LEFT JOIN proy_estados USING(idEstado) WHERE estado = '%s'", $link->real_escape_string($_GET["filtroEstado"]));
         
         // Ejecutamos el query
         $result = mysqli_query($link, $query) or die("Query 1 failed");
@@ -56,12 +56,39 @@
 			while($line = mysqli_fetch_assoc($result)){
             
                 // Fijamos el bloque con la informacion de cada presidente
-                $template->setCurrentBlock("PRESIDENTE");
-                
-                // Desplegamos la informacion de cada presidentes
-                $template->setVariable("NOMBRE", $line['nombre']);
-                
-                $template->parseCurrentBlock("PRESIDENTE");
+				$template->setCurrentBlock("PRESIDENTE");
+				
+				// Desplegamos la informacion de cada presidentes
+				$template->setVariable("NOMBRE", $line['nombre']);
+				$template->setVariable("NACIMIENTO", $line['nacimiento']);
+				if($line['muerte'] != NULL)
+				{
+					$template->setVariable("MUERTE", $line['muerte']);
+				}
+				else
+				{
+					$template->setVariable("MUERTE", "Vivo");
+				}
+				$template->setVariable("EDAD", $line['edad']);
+				$template->setVariable("CIDNAC", $line['ciudad']);
+				$template->setVariable("ESTADO", $line['estado']);
+				$template->setVariable("INICIO", $line['fechaInicio']);
+				$template->setVariable("FIN", $line['fechaFin']);
+				if($line['partido'] == NULL)
+				{
+					$template->setVariable("PARTIDO", "Independiente");
+				}
+				else
+				{
+					$template->setVariable("PARTIDO", $line['partido']);
+				}
+				$template->setVariable("BIO", $line['info']);
+
+				$image = sprintf("<img src=\"../../pictures/Presidentes/%s\" style=\"width: 256px; height: 300px;\">", $line['imagen']);
+
+				$template->setVariable("IMAGEN", $image);
+				
+				$template->parseCurrentBlock("PRESIDENTE");
             }// while
             
             
@@ -72,7 +99,8 @@
 		{
 			// Fijamos el bloque con la informacion de cada presidente
 			$template->setCurrentBlock("MENSAJE");
-			$template->setVariable("MENSAJE", "<em id= \"noEncontrado\" class= \"text-danger\">No hay presidentes registrados que hayan nacido en ese estado.</em>");
+			$template->setVariable("MENSAJE", "<em id= \"noEncontrado\" class= \"text-danger\">No hay presidentes registrados que hayan nacido en este estado.</em>");
+
 		}
 
         // Liberamos memoria
@@ -89,9 +117,7 @@
 		// Nos conectamos a la base de datos
 		$link = require __DIR__ . "/connect.php";
 		
-		$query = "SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre, imagen FROM proy_presidentes";
-
-		
+		$query = "SELECT CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno) AS nombre, edad, muerte, nacimiento, fechaInicio, fechaFin, partido, ciudad, estado, info, imagen FROM proy_presidentes LEFT JOIN proy_periodos USING(idPresidente) LEFT JOIN proy_partidos USING(idPartido) LEFT JOIN proy_ciudades ON idCiudadNacimiento = idCiudad LEFT JOIN proy_estados USING(idEstado)";
 		// Ejecutamos el query
 		$result = mysqli_query($link, $query) or die("Query 1 failed");
 							
@@ -102,8 +128,37 @@
 				
 				// Desplegamos la informacion de cada presidentes
 				$template->setVariable("NOMBRE", $line['nombre']);
+				$template->setVariable("NACIMIENTO", $line['nacimiento']);
+				if($line['muerte'] != NULL)
+				{
+					$template->setVariable("MUERTE", $line['muerte']);
+				}
+				else
+				{
+					$template->setVariable("MUERTE", "Vivo");
+				}
+				$template->setVariable("EDAD", $line['edad']);
+				$template->setVariable("CIDNAC", $line['ciudad']);
+				$template->setVariable("ESTADO", $line['estado']);
+				$template->setVariable("INICIO", $line['fechaInicio']);
+				$template->setVariable("FIN", $line['fechaFin']);
+				if($line['partido'] == NULL)
+				{
+					$template->setVariable("PARTIDO", "Independiente");
+				}
+				else
+				{
+					$template->setVariable("PARTIDO", $line['partido']);
+				}
+				$template->setVariable("BIO", $line['info']);
+
+				$image = sprintf("<img src=\"../../pictures/Presidentes/%s\" style=\"width: 256px; height: 300px;\">", $line['imagen']);
+
+				$template->setVariable("IMAGEN", $image);
 				
 				$template->parseCurrentBlock("PRESIDENTE");
+
+
 			}// while
 			
 			
